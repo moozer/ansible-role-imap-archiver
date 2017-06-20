@@ -1,0 +1,22 @@
+# we follow https://www.linode.com/docs/email/clients/installing-squirrelmail-on-debian-7
+
+- name: install webmail
+  apt: name={{item}} state=present
+  with_items:
+  - squirrelmail
+
+- name: copy apache config
+  template:
+    src: apache_squirrelmail.conf.j2
+    dest: /etc/apache2/sites-available/squirrelmail.conf
+    mode: 0644
+    owner: root
+    group: root
+  notify: restart apache2
+
+- name: enable squirrelmail site
+  file:
+    src: /etc/apache2/sites-available/squirrelmail.conf
+    dest: /etc/apache2/sites-enabled/squirrelmail.conf
+    state: link
+  notify: restart apache2

@@ -1,7 +1,7 @@
 service imap-login {
   inet_listener imap {
-    # disable imap on port 143
-    port = 0
+    port = 143
+    address = localhost
   }
   inet_listener imaps {
     port = 993
