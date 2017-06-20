@@ -1,0 +1,14 @@
+- name: install packages
+  apt: name={{item}} state=present
+  with_items:
+  - dovecot-imapd
+  notify: restart dovecot
+
+- name: set mail conf
+  template:
+    src: dovecot_10-mail.conf.j2
+    dest: /etc/dovecot/conf.d/10-mail.conf
+    mode: 0644
+    owner: root
+    group: root
+  notify: restart dovecot
