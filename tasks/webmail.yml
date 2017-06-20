@@ -20,3 +20,6 @@
     dest: /etc/apache2/sites-enabled/squirrelmail.conf
     state: link
   notify: restart apache2
+
+- name: copy index.html redirect
+  template: src=index.html.j2 dest=/var/www/html/index.html
