@@ -2,6 +2,10 @@
   become: yes
   user: vagrant
 
+  vars:
+  - imap_certificate: vagranttest.pem
+  - imap_key_file: vagranttest.key
+
   pre_tasks:
   - name: updating package list
     apt: update_cache=yes cache_valid_time=3600

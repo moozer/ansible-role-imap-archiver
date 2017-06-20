@@ -4,11 +4,42 @@
   - dovecot-imapd
   notify: restart dovecot
 
+- name: set master conf
+  template:
+    src: dovecot_10-master.conf.j2
+    dest: /etc/dovecot/conf.d/10-master.conf
+    mode: 0644
+    owner: root
+    group: root
+  notify: restart dovecot
+
 - name: set mail conf
   template:
     src: dovecot_10-mail.conf.j2
     dest: /etc/dovecot/conf.d/10-mail.conf
     mode: 0644
+    owner: root
+    group: root
+  notify: restart dovecot
+
+- name: set ssl conf
+  template:
+    src: dovecot_10-ssl.conf.j2
+    dest: /etc/dovecot/conf.d/10-ssl.conf
+    mode: 0644
+    owner: root
+    group: root
+  notify: restart dovecot
+
+- name: copy certificate
+  copy: src={{imap_certificate}} dest=/etc/dovecot/dovecot.pem
+  notify: restart dovecot
+
+- name: copy key
+  copy:
+    src: "{{imap_key_file}}"
+    dest: /etc/dovecot/private/dovecot.key
+    mode: 0600
     owner: root
     group: root
   notify: restart dovecot
