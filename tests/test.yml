@@ -1,0 +1,9 @@
+- hosts: all
+  become: yes
+  user: vagrant
+
+  roles:
+  - server-imap-archiver
+
+  tasks:
+  - debug: var=ansible_hostname
