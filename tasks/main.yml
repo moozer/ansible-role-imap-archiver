@@ -1,2 +1,4 @@
 - include: dovecot.yml
+
 - include: webmail.yml
+  when: install_webmail

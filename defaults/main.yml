@@ -1,3 +1,5 @@
 
 # both squirrelmail and dovecot will only bind to localhost
-localhost_only: true 
+localhost_only: true
+
+install_webmail: true
