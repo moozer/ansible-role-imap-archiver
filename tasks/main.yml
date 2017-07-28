@@ -1,4 +1,6 @@
 - include: dovecot.yml
+  tags: imapd
 
 - include: webmail.yml
   when: install_webmail
+  tags: webmail
