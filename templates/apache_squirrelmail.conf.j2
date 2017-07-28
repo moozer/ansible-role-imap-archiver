@@ -1,6 +1,12 @@
 Alias /squirrelmail /usr/share/squirrelmail
 
 <Directory /usr/share/squirrelmail>
+  {% if localhost_only %}
+  order deny,allow
+  deny from all
+  allow from 127.0.0.1
+  {% endif %}
+
   Options FollowSymLinks
   <IfModule mod_php5.c>
     php_flag register_globals off
