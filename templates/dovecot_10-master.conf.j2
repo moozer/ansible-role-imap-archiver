@@ -3,6 +3,7 @@ service imap-login {
     port = 143
     address = localhost
   }
+  {% if enable_ssl %}
   inet_listener imaps {
     port = 993
     ssl = yes
@@ -10,6 +11,7 @@ service imap-login {
     address = localhost
     {% endif %}
   }
+  {% endif %}
 }
 
 service pop3-login {

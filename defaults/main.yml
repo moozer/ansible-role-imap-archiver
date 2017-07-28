@@ -3,3 +3,4 @@
 localhost_only: true
 
 install_webmail: true
+enable_ssl: True
