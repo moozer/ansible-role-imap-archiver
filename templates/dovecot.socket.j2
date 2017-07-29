@@ -5,10 +5,10 @@ Description=Dovecot IMAP/POP3 email server activation socket
 #dovecot expects separate IPv4 and IPv6 sockets
 BindIPv6Only=ipv6-only
 ListenStream=127.0.0.1:143
-ListenStream=::1:143
+#ListenStream=[::1]:143
 {% if enable_ssl %}
 ListenStream=0.0.0.0:993
-ListenStream=[::]:993
+#ListenStream=[::]:993
 {% endif %}
 KeepAlive=true
 
